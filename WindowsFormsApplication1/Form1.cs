@@ -186,7 +186,23 @@ namespace WindowsFormsApplication1
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
+            //ArrayList teacher = recover();
 
+            listVisualizar.Items.Clear();
+
+            foreach (Professor t in recover())
+            {
+                ListViewItem list = new ListViewItem();
+
+                list.Text = t.GetCodigo() + "";
+                list.SubItems.Add(t.GetNome());
+                list.Text = t.GetContacto() + "";
+                list.Text = t.GetSexo() + "";
+                list.SubItems.Add(t.GetEstadoCivil());
+                list.SubItems.Add(t.GetNivelAcademico());
+                list.Text = t.GetSalario() + "";
+                list.Text = t.GetCargaHoraria() + "";
+            }
         }
     }
 }
