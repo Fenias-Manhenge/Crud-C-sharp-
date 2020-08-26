@@ -152,7 +152,38 @@ namespace WindowsFormsApplication1
             rbtDivorciado.Checked = false;
         }
 
-        public static Arr
+        public static ArrayList recover()
+        {
+            OleDbConnection connection = connect();
+            OleDbCommand command = null;
+            OleDbDataReader reader = null;
+
+            ArrayList teacher = new ArrayList();
+
+            try
+            {
+                connection.Open();
+
+                string sql = "select* From Professor;";
+
+                command = new OleDbCommand(sql, connection);
+
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    teacher.Add(new Professor(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3),
+                        reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7)));
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erro na solicitação de dados: " + e.Message, "DADOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return teacher;
+        }
+
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
 
