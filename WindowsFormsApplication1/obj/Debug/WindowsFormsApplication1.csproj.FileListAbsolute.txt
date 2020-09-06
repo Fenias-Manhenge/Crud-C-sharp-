@@ -13,3 +13,9 @@ C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\b
 C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
 C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
 C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
+C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.Data.Services.dll
+C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.Shell.Interop.dll
+C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.Data.Core.dll
+C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.OLE.Interop.dll
+C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\Microsoft.VisualStudio.TextManager.Interop.dll
+C:\Users\Fenias\source\repos\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.CopyComplete

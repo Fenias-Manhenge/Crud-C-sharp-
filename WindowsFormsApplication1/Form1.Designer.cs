@@ -165,6 +165,11 @@ namespace WindowsFormsApplication1
             // cboNivel
             // 
             this.cboNivel.FormattingEnabled = true;
+            this.cboNivel.Items.AddRange(new object[] {
+            "Licenciado",
+            "Mestre",
+            "PHD",
+            "Catedratico"});
             this.cboNivel.Location = new System.Drawing.Point(130, 114);
             this.cboNivel.Name = "cboNivel";
             this.cboNivel.Size = new System.Drawing.Size(121, 21);

@@ -8,15 +8,15 @@ namespace WindowsFormsApplication1
 {
     class Professor
     {
-        private int codigo, salario, cargaHoraria;
-        private string nome, contacto, nivelAcademico, estadoCivil, sexo;
+        private int codigo, salario, cargaHoraria, contacto;
+        private string nome, nivelAcademico, estadoCivil, sexo;
 
         public Professor()
         {
                 
         }
 
-        public Professor(int codigo, int salario, int cargaHoraria, string nome, string contacto, string nivelAcademico, string estadoCivil, string sexo)
+        public Professor(int codigo , string nome, int contacto, string nivelAcademico, int salario, int cargaHoraria, string sexo, string estadoCivil)
         {
             this.codigo = codigo;
             this.salario = salario;
@@ -48,7 +48,7 @@ namespace WindowsFormsApplication1
             return nome;
         }
 
-        public string GetContacto()
+        public int GetContacto()
         {
             return contacto;
         }

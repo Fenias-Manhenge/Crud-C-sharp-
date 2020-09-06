@@ -17,6 +17,7 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -41,7 +42,20 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
+                /*OleDbConnection connection = null;
 
+                try
+                {
+                    String path = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source= C:\BD-AULA\Professor.accdb";
+
+                    connection = new OleDbConnection(path);
+
+                    MessageBox.Show("Conexao feita com successo!", "Conexao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message, "Conexao", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }*/
         }
 
         private void txtCodigo_TextChanged(object sender, EventArgs e)
@@ -59,11 +73,12 @@ namespace WindowsFormsApplication1
             OleDbConnection connection = connect();
             OleDbCommand command = null;
 
+
             try
             {
                 connection.Open();
 
-                string sql = "insert into Funcionario values (?,?,?,?,?,?,?,?)";
+                string sql = "insert into Professor values (?,?,?,?,?,?,?,?)";
 
                 command = new OleDbCommand(sql, connection);
 
@@ -108,7 +123,10 @@ namespace WindowsFormsApplication1
             {
                 MessageBox.Show("Error: " + ex.Message, "Cadastro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+            finally
+            {
+                connection.Close();
+            }
         }
 
         public static OleDbConnection connect()
@@ -121,7 +139,7 @@ namespace WindowsFormsApplication1
 
                 connection = new OleDbConnection(path);
 
-                MessageBox.Show("Conexao feita com successo!", "Conexao", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                //MessageBox.Show("Conexao feita com successo!", "Conexao", MessageBoxButtons.OK,MessageBoxIcon.Information);
 	        }
 	        catch (Exception e)
 	        {
@@ -141,7 +159,7 @@ namespace WindowsFormsApplication1
             txtCodigo.Clear();
             txtNome.Clear();
             txtContacto.Clear();
-            cboNivel.Items.Clear();
+            //cboNivel.Items.Clear();
             txtSalarioHora.Clear();
             txtCargaHoraria.Clear();
             rbtMasculino.Checked = false;
@@ -164,7 +182,8 @@ namespace WindowsFormsApplication1
             {
                 connection.Open();
 
-                string sql = "select* From Professor;";
+
+                string sql = "select* From Professor";
 
                 command = new OleDbCommand(sql, connection);
 
@@ -172,25 +191,28 @@ namespace WindowsFormsApplication1
 
                 while (reader.Read())
                 {
-                    teacher.Add(new Professor(reader.GetInt32(0), reader.GetInt32(1), reader.GetInt32(2), reader.GetString(3),
-                        reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7)));
+                    teacher.Add(new Professor(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3),
+                        reader.GetInt32(4), reader.GetInt32(5), reader.GetString(6), reader.GetString(7)));
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show("Erro na solicitação de dados: " + e.Message, "DADOS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            finally
+            {
+                connection.Close();
+            }
             return teacher;
         }
 
         private void btnVisualizar_Click(object sender, EventArgs e)
         {
-            //ArrayList teacher = recover();
+            ArrayList teacher = recover();
 
             listVisualizar.Items.Clear();
 
-            foreach (Professor t in recover())
+            foreach (Professor t in teacher)
             {
                 ListViewItem list = new ListViewItem();
 
@@ -202,6 +224,8 @@ namespace WindowsFormsApplication1
                 list.SubItems.Add(t.GetNivelAcademico());
                 list.Text = t.GetSalario() + "";
                 list.Text = t.GetCargaHoraria() + "";
+
+                listVisualizar.Items.Add(list);
             }
         }
     }
